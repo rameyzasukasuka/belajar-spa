@@ -1,84 +1,151 @@
+/* Mode dasar */
 .app {
-  min-height: 100vh;
-  background: #1e1e2f;
-  color: white;
-  padding: 20px;
   font-family: Arial, sans-serif;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Bagian Biodata */
+.app.dark {
+  background: #0f1021; /* mirip screenshot */
+  color: white;
+}
+
+.app.light {
+  background: #f4f4f4;
+  color: black;
+}
+
+/* Heading kuning & center */
+h1, h2, h3 {
+  color: #ff9f1c;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.navbar button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #222;
+  color: white;
+  transition: background 0.2s;
+}
+
+.navbar button:hover {
+  background: #444;
+}
+
+.toggle-btn {
+  margin-left: auto;
+  background: #007bff;
+  color: white;
+}
+
+.toggle-btn:hover {
+  background: #0056b3;
+}
+
+/* Bio */
 .bio {
   text-align: center;
-  margin-bottom: 50px;
-}
-
-.bio h1 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: #f9b234;
+  margin-bottom: 30px;
 }
 
 .bio .profil {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  margin: 10px 0;
   object-fit: cover;
-  margin: 15px 0;
-  border: 3px solid #f9b234;
+  border: 3px solid #ff9f1c;
 }
 
-.bio p {
-  margin: 5px 0;
-  color: #ddd;
-}
-
-/* Bagian Stack */
+/* Stack */
 .stack {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.stack h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #f9b234;
+  margin-top: 20px;
 }
 
 .stack p {
-  max-width: 700px;
-  margin: 10px auto 30px;
-  color: #ccc;
-  line-height: 1.6;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  text-align: center;
 }
 
-/* Grid Stack */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: auto;
+  gap: 15px;
 }
 
 .card {
-  background: #2b2b3c;
-  border-radius: 12px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 15px;
+  border-radius: 10px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 .card:hover {
   transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .card img {
   width: 50px;
-  margin-bottom: 10px;
+  height: 50px;
+  margin-bottom: 8px;
 }
 
-.card span {
-  display: block;
-  font-size: 14px;
-  margin-top: 5px;
+/* Contact */
+.contact {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.contact-form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form .row {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.contact-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-form button:hover {
+  background: #0056b3;
 }

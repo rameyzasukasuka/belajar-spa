@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+  const [page, setPage] = useState("home");
+
   const stacks = [
     { name: "NodeJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
     { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
@@ -16,43 +19,74 @@ function App() {
   ];
 
   return (
-    <div className="app">
-      {/* Bagian Biodata */}
-      <section className="bio">
-        <h1>Selamat Datang di Website Rameyza</h1>
-        <img src="/src/assets/rrr.jpg" alt="Foto rameyza" className="profil" />
-        <p>Perkenalkan nama saya <b>Rameyza Abrar Athailah</b></p>
-        <p>Kalian bisa panggil aku <b>Reza</b></p>
-        <p>Keterampilan yang saya miliki adalah di bidang olahraga, yaitu di pencak silat</p>
-        <p>Bahasa yang saya kuasai saat ini adalah bahasa Indonesia</p>
-        <p>Project yang sekarang saya lakukan adalah menurunkan berat badan</p>
-        <p>Alasan saya memilih RPL adalah untuk mempelajari beberapa program di jurusan RPL</p>
-        <p>Hobi saya adalah berenang</p>
-        <p>Genre kesukaan saya saat ini adalah horor</p>
-        <p>Hal yang ingin saya pelajari adalah desain</p>
-        <p>Hal yang saya tidak suka adalah hewan tikus</p>
-        <p>Warna yang saya sukai adalah biru</p>
-      </section>
+    <div className={`app ${darkMode ? "dark" : "light"}`}>
+      {/* Navbar */}
+      <nav className="navbar">
+        <button onClick={() => setPage("home")}>Home</button>
+        <button onClick={() => setPage("contact")}>Contact</button>
+        <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
+      </nav>
 
-      {/* Bagian Stack */}
-      <section className="stack">
-        <h2>Bahasa Pemrograman / Stack yang Pernah dipelajari</h2>
-        <p>
-          Dikarenakan aku ini bersekolah di SMK Negeri 8 Malang dan masuk di jurusan RPL
-          (Rekayasa Perangkat Lunak), jadi aku haruslah belajar yang namanya bahasa pemrograman.
-          Nah ada banyak sekali bahasa pemrograman / stack yang sudah pernah aku pelajari,
-          seperti dibawah ini iya.
-        </p>
+      {/* Halaman Home */}
+      {page === "home" && (
+        <>
+          <section className="bio">
+            <h1>Selamat Datang di Website Rameyza</h1>
+            <img src="/rrr.jpg" alt="Foto rameyza" className="profil" />
+            <p>Perkenalkan nama saya <b>Rameyza Abrar Athailah</b></p>
+            <p>Kalian bisa panggil aku <b>Reza</b></p>
+            <p>Keterampilan: pencak silat</p>
+            <p>Bahasa: Indonesia</p>
+            <p>Project saat ini: menurunkan berat badan</p>
+            <p>Hobi: berenang</p>
+            <p>Genre favorit: horor</p>
+            <p>Hal yang ingin dipelajari: desain</p>
+            <p>Hal yang tidak disukai: tikus</p>
+            <p>Warna favorit: biru</p>
+          </section>
 
-        <div className="grid">
-          {stacks.map((stack, i) => (
-            <div key={i} className="card">
-              <img src={stack.icon} alt={stack.name} />
-              <span>{stack.name}</span>
+          <section className="stack">
+            <h2>Bahasa Pemrograman / Stack yang Pernah Dipelajari</h2>
+            <p>
+              Dikarenakan aku ini bersekolah di SMK Negeri 8 Malang dan masuk di jurusan RPL
+              (Rekayasa Perangkat Lunak), jadi aku haruslah belajar yang namanya bahasa pemrograman.
+              Nah ada banyak sekali bahasa pemrograman / stack yang sudah pernah aku pelajari,
+              seperti dibawah ini iya.
+            </p>
+            <div className="grid">
+              {stacks.map((stack, i) => (
+                <div key={i} className="card">
+                  <img src={stack.icon} alt={stack.name} />
+                  <span>{stack.name}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
+        </>
+      )}
+
+      {/* Halaman Contact */}
+      {page === "contact" && (
+        <section className="contact">
+          <h2>Connect with me</h2>
+          <h3>Get in touch</h3>
+          <p>
+            I'd love to hear from you! If you have any questions, comments, or feedback,
+            please use the form below.
+          </p>
+
+          <form className="contact-form">
+            <div className="row">
+              <input type="text" placeholder="Enter your name" required />
+              <input type="email" placeholder="Enter your email" required />
+            </div>
+            <textarea placeholder="Enter your message" required></textarea>
+            <button type="submit">Submit now →</button>
+          </form>
+        </section>
+      )}
     </div>
   );
 }
